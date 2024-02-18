@@ -3,10 +3,16 @@ import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
+interface Item {
+  id: number;
+  name: string;
+  description: string;
+}
+
 const ItemDetail = () => {
   const router = useRouter();
   const { id } = router.query;
-  const [item, setItem] = useState(null);
+  const [item, setItem] = useState<Item | null>(null); //型指定
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [isEditing, setIsEditing] = useState(false);
